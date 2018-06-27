@@ -17,27 +17,51 @@ namespace Api.Minions
 
         public MinionController(IMinionService service, IConfiguration configuration)
         {
-            this._service = service;
-            this._configuration = configuration;
+            _service = service;
+            _configuration = configuration;
         }
 
-        [Route("/")]
+        [Route("/{minionName?}")]
         [HttpGet]
         [Produces("text/html")]
-        public IActionResult Index()
+        public ActionResult Index(string minionName)
         {
             var httpConnectionFeature = this.HttpContext.Features.Get<IHttpConnectionFeature>();
             var localIpAddress = httpConnectionFeature?.LocalIpAddress;
             var hostName = Environment.MachineName;
-            var appName = this._configuration["APP_NAME"];
-            var version = this._configuration["APP_VERSION"];
 
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append("Host: ").Append(hostName).Append("<br/>");
-            stringBuilder.Append("Minion Type: ").Append(appName).Append("<br/>");
+            stringBuilder.Append("Minion Type: ").Append(minionName).Append("<br/>");
             stringBuilder.Append("IP: ").Append(localIpAddress).Append("<br/>");
-            stringBuilder.Append("Version: ").Append(version).Append("<br/>");
-            stringBuilder.Append(this._service.GetMinionByName(appName));
+            
+            if (string.IsNullOrEmpty(minionName)) 
+            {
+                stringBuilder.Append("Minion List: ").Append(string.Join(" | ", _service.GetMinionNames()));
+            } 
+            else 
+            {
+                stringBuilder.Append(_service.GetMinionByName(minionName));
+            }
+            
+            return Ok(stringBuilder.ToString());
+        }
+
+        [Route("/random")]
+        [HttpGet]
+        [Produces("text/html")]
+        public ActionResult Random()
+        {
+            var httpConnectionFeature = this.HttpContext.Features.Get<IHttpConnectionFeature>();
+            var localIpAddress = httpConnectionFeature?.LocalIpAddress;
+            var hostName = Environment.MachineName;
+            var minionName = _service.GetRandomMinionName();
+
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.Append("Host: ").Append(hostName).Append("<br/>");
+            stringBuilder.Append("Minion Type: ").Append(minionName).Append("<br/>");
+            stringBuilder.Append("IP: ").Append(localIpAddress).Append("<br/>");
+            stringBuilder.Append(_service.GetMinionByName(minionName));
             
             return Ok(stringBuilder.ToString());
         }

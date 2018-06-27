@@ -6,12 +6,14 @@ namespace Api.Minions
 {
     public class MinionService : IMinionService
     {
-        Dictionary<string,string> minions = new Dictionary<string, string>();
+        static readonly Random _random = new Random();
+
+        Dictionary<string,string> _minions = new Dictionary<string, string>();
 
         //source of ascii art - http://textart4u.blogspot.co.uk/2013/08/minions-emoticons-text-art-for-facebook.html
         public MinionService() 
         {
-            minions.Add("one-eyed-minion","<p style=\" size:13px; font-family:'lucida grande', tahoma, verdana, arial, sans-serif; line-height:18px; color:black\">"+
+            _minions.Add("one","<p style=\" size:13px; font-family:'lucida grande', tahoma, verdana, arial, sans-serif; line-height:18px; color:black\">"+
                     "──────────▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄<br/>" +
                     "────────█═════════════════█<br/>" +
                     "──────█═════════════════════█<br/>" +
@@ -40,7 +42,7 @@ namespace Api.Minions
                     "──────────▐▓▓▓▓▌──▐▓▓▓▓▌<br/>" +
                     "─────────▄████▀────▀████▄<br/>" +
                     "─────────▀▀▀▀────────▀▀▀▀</p>");
-            minions.Add("two-eyed-minion","<p style=\" size:13px; font-family:'lucida grande', tahoma, verdana, arial, sans-serif; line-height:18px; color:blue\">"+
+            _minions.Add("two","<p style=\" size:13px; font-family:'lucida grande', tahoma, verdana, arial, sans-serif; line-height:18px; color:blue\">"+
                     "──────────▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄<br/>" +
                     "────────█═════════════════█<br/>" +
                     "──────█═════════════════════█<br/>" +
@@ -69,7 +71,7 @@ namespace Api.Minions
                     "──────────▐▓▓▓▓▌──▐▓▓▓▓▌<br/>" +
                     "─────────▄████▀────▀████▄<br/>" +
                     "─────────▀▀▀▀────────▀▀▀▀</p>");
-            minions.Add("sad-minion","<p style=\" size:13px; font-family:'lucida grande', tahoma, verdana, arial, sans-serif; line-height:18px; color:darkblue\">"+
+            _minions.Add("sad","<p style=\" size:13px; font-family:'lucida grande', tahoma, verdana, arial, sans-serif; line-height:18px; color:darkblue\">"+
                     "──────────▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄<br/>" +
                     "────────█═════════════════█<br/>" +
                     "──────█═════════════════════█<br/>" +
@@ -98,7 +100,7 @@ namespace Api.Minions
                     "──────────▐▓▓▓▓▌──▐▓▓▓▓▌<br/>" +
                     "─────────▄████▀────▀████▄<br/>" +
                     "─────────▀▀▀▀────────▀▀▀▀</p>");
-            minions.Add("happy-minion","<p style=\" size:13px; font-family:'lucida grande', tahoma, verdana, arial, sans-serif; line-height:18px; color:darkorange\">"+
+            _minions.Add("happy","<p style=\" size:13px; font-family:'lucida grande', tahoma, verdana, arial, sans-serif; line-height:18px; color:darkorange\">"+
                     "────────────▀▄───█───▄▀<br/>" +
                     "───────────▄▄▄█▄▄█▄▄█▄▄▄<br/>" +
                     "────────▄▀▀═════════════▀▀▄<br/>" +
@@ -133,13 +135,26 @@ namespace Api.Minions
                     "─────────▀▀▀▀────────▀▀▀▀</p>");
         }
 
+        public List<string> GetMinionNames() 
+        {
+            var keys = from k in _minions.Keys orderby k select k;
+            return keys.ToList();
+        }
+
         public string GetMinionByName(string name) 
         {
-            if(string.IsNullOrEmpty(name) || !this.minions.ContainsKey(name)) 
+            if(string.IsNullOrEmpty(name) || !this._minions.ContainsKey(name)) 
             {
-                name = this.minions.Keys.First();
+                name = this._minions.Keys.First();
             }
-            return this.minions[name];
+            return this._minions[name];
+        }
+
+        public string GetRandomMinionName()
+        {
+            var list = GetMinionNames();
+            var index = _random.Next(0, list.Count());
+            return list[index];
         }
 
     }
