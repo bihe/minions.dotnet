@@ -6,7 +6,7 @@ project.lock.json
 nupkg/
 
 # Visual Studio Code
-.vscode
+#.vscode
 
 # User-specific files
 *.suo
@@ -29,7 +29,7 @@ msbuild.log
 msbuild.err
 msbuild.wrn
 
-# Visual Studio 2015
+# Visual Studio
 .vs/
 
 docker/dist

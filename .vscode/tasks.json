@@ -1,0 +1,43 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "group": "build",
+            "type": "process",
+            "label": "BUILD: build",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "--no-restore"
+            ],
+            //"isShellCommand": true,
+            "options": {
+                "cwd": "${workspaceRoot}/api"
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "group": "build",
+            "type": "shell",
+            "label": "BUILD: RE-build",
+            "command": "dotnet build --no-incremental --verbosity n --force",
+            //"isShellCommand": true,
+            "options": {
+                "cwd": "${workspaceRoot}/api"
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}
