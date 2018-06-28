@@ -8,12 +8,12 @@ namespace Api.Minions
     {
         static readonly Random _random = new Random();
 
-        Dictionary<string,string> _minions = new Dictionary<string, string>();
+        Dictionary<string,string> _asciiArt = new Dictionary<string, string>();
 
         //source of ascii art - http://textart4u.blogspot.co.uk/2013/08/minions-emoticons-text-art-for-facebook.html
         public MinionService() 
         {
-            _minions.Add("one","<p style=\" size:13px; font-family:'lucida grande', tahoma, verdana, arial, sans-serif; line-height:18px; color:black\">"+
+            _asciiArt.Add("one","<p style=\" size:13px; font-family:'lucida grande', tahoma, verdana, arial, sans-serif; line-height:18px; color:black\">"+
                     "──────────▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄<br/>" +
                     "────────█═════════════════█<br/>" +
                     "──────█═════════════════════█<br/>" +
@@ -42,7 +42,7 @@ namespace Api.Minions
                     "──────────▐▓▓▓▓▌──▐▓▓▓▓▌<br/>" +
                     "─────────▄████▀────▀████▄<br/>" +
                     "─────────▀▀▀▀────────▀▀▀▀</p>");
-            _minions.Add("two","<p style=\" size:13px; font-family:'lucida grande', tahoma, verdana, arial, sans-serif; line-height:18px; color:blue\">"+
+            _asciiArt.Add("two","<p style=\" size:13px; font-family:'lucida grande', tahoma, verdana, arial, sans-serif; line-height:18px; color:blue\">"+
                     "──────────▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄<br/>" +
                     "────────█═════════════════█<br/>" +
                     "──────█═════════════════════█<br/>" +
@@ -71,7 +71,7 @@ namespace Api.Minions
                     "──────────▐▓▓▓▓▌──▐▓▓▓▓▌<br/>" +
                     "─────────▄████▀────▀████▄<br/>" +
                     "─────────▀▀▀▀────────▀▀▀▀</p>");
-            _minions.Add("sad","<p style=\" size:13px; font-family:'lucida grande', tahoma, verdana, arial, sans-serif; line-height:18px; color:darkblue\">"+
+            _asciiArt.Add("sad","<p style=\" size:13px; font-family:'lucida grande', tahoma, verdana, arial, sans-serif; line-height:18px; color:darkblue\">"+
                     "──────────▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄<br/>" +
                     "────────█═════════════════█<br/>" +
                     "──────█═════════════════════█<br/>" +
@@ -100,7 +100,7 @@ namespace Api.Minions
                     "──────────▐▓▓▓▓▌──▐▓▓▓▓▌<br/>" +
                     "─────────▄████▀────▀████▄<br/>" +
                     "─────────▀▀▀▀────────▀▀▀▀</p>");
-            _minions.Add("happy","<p style=\" size:13px; font-family:'lucida grande', tahoma, verdana, arial, sans-serif; line-height:18px; color:darkorange\">"+
+            _asciiArt.Add("happy","<p style=\" size:13px; font-family:'lucida grande', tahoma, verdana, arial, sans-serif; line-height:18px; color:darkorange\">"+
                     "────────────▀▄───█───▄▀<br/>" +
                     "───────────▄▄▄█▄▄█▄▄█▄▄▄<br/>" +
                     "────────▄▀▀═════════════▀▀▄<br/>" +
@@ -134,7 +134,7 @@ namespace Api.Minions
                     "─────────▄████▀────▀████▄<br/>" +
                     "─────────▀▀▀▀────────▀▀▀▀</p>");
 
-            _minions.Add("Dimetrodon", @"<pre style='color:green;'>
+            _asciiArt.Add("Dimetrodon", @"<pre style='color:green;'>
             (taken from http://www.lstock.demon.nl/aap4.html)
 
 
@@ -166,7 +166,7 @@ Rodman
 
 
 
-            _minions.Add("Stegosaurus", @"<pre style='color:green;'>
+            _asciiArt.Add("Stegosaurus", @"<pre style='color:green;'>
 
                             .       .
                            / `.   .' \
@@ -186,10 +186,10 @@ Rodman
                  '---.o___,'       .o___,'     Stegosaurus
 Rodman
 
-            </pre>");
+                </pre>");
 
 
-            _minions.Add("Archaeopteryx", @"<pre style='color:green;'>
+            _asciiArt.Add("Archaeopteryx", @"<pre style='color:green;'>
 
                            _
                         __~a~_
@@ -209,23 +209,81 @@ Rodman
                            '/||\'        Archaeopteryx
 Rodman
 
-        </pre>");
+            </pre>");
 
+            _asciiArt.Add("AT-ST", @"<pre style='color:darkblue;'>
+
+              Art by Shanaka Dias
+       ________________
+     |'-.--._ _________:
+     |  /    |  __    __\
+     | |  _  | [\_\= [\_\
+     | |.' '. \.........|
+     | ( <)  ||:       :|_
+      \ '._.' | :.....: |_(o
+       '-\_   \ .------./
+       _   \   ||.---.||  _
+      / \  '-._|/\n~~\n' | \
+     (| []=.--[===[()]===[) |
+     <\_/  \_______/ _.' /_/
+     ///            (_/_/
+     |\\            [\\
+     ||:|           | I|
+     |::|           | I|
+     ||:|           | I|
+     ||:|           : \:
+     |\:|            \I|
+     :/\:            ([])
+     ([])             [|
+      ||              |\_
+     _/_\_            [ -'-.__
+snd <]   \>            \_____.>
+      \__/
+
+            </pre>");
+
+
+            _asciiArt.Add("Boba Fett", @"<pre style='color:darkblue;'>
+                            
+                   
+           |~
+           |.---.
+          .'_____`. /\
+          |~xxxxx~| ||
+          |_  #  _| ||
+     .------`-#-'-----.
+    (___|\_________/|_.`.
+     /  | _________ | | |
+    /   |/   _|_   \| | |
+   /   /X|  __|__  |/ `.|
+  (  --< \\/    _\//|_ |`.
+  `.    ~----.-~=====,:=======
+    ~-._____/___:__(``/| |
+      |    |      XX|~ | |
+       \__/======| /|  `.|
+       |_\|\    /|/_|    )
+       |_   \__/   _| .-'
+       | \ .'||`. / |(_|
+    LS |  ||.'`.||  |   )
+       |  `'|  |`'  |  /
+       |    |  |    |\/   Boba Fett
+
+             </pre>");
         }
 
         public List<string> GetMinionNames() 
         {
-            var keys = from k in _minions.Keys orderby k select k;
+            var keys = from k in _asciiArt.Keys orderby k select k;
             return keys.ToList();
         }
 
         public string GetMinionByName(string name) 
         {
-            if(string.IsNullOrEmpty(name) || !this._minions.ContainsKey(name)) 
+            if(string.IsNullOrEmpty(name) || !this._asciiArt.ContainsKey(name)) 
             {
-                name = this._minions.Keys.First();
+                name = this._asciiArt.Keys.First();
             }
-            return this._minions[name];
+            return this._asciiArt[name];
         }
 
         public string GetRandomMinionName()
