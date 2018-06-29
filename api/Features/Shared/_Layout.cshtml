@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="ASCII-Art Minions.">
+    <meta name="author" content="Henrik Binggl">
+    <link rel="shortcut icon" href="favicon.ico">
+    <title>@ViewData["Title"]</title>
+    <style type="text/css">
+        body {
+            font-family:monospace;
+        }
+        .label {
+            color: darkgray;
+        }
+        .ip_address {
+            color: red;
+        }
+        .minion_type {
+            color: darkcyan;
+            font-weight: bold;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .minion_link {
+            color: darkblue;
+            text-decoration: none;
+        }
+        .minion_link:hover {
+            color: darkgoldenrod;
+            text-decoration: underline;
+        }
+
+    </style>
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

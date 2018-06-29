@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Api.Minions 
+namespace Api.Features.Minions 
 {
     public interface IMinionService 
     {
